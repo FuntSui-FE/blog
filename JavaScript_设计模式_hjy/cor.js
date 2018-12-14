@@ -1,10 +1,10 @@
-//职责链模式
+//职责链模式  
 const defaultFunciton = ()=>{return true}
 class action {
   constructor(name,callback){
     !!name?this.name = name : console.error( '请上传职责名' );
     !!callback?this.callback = callback : defaultFunciton;
-    this.nextAction = ()=>{console.log('审批通过')};
+    this.nextAction = {handle:(ev)=>{console.log('审核通过')}}
   }
   setNextAction(action){
     this.nextAction = action
@@ -33,5 +33,5 @@ let a3 = new action('总监',(ev)=>{
 a1.setNextAction(a2);
 a2.setNextAction(a3);
 
-a1.handle({evName:'彭于晏请假',time:8});
+a1.handle({evName:'彭于晏请假',time:6});
 
