@@ -3,8 +3,8 @@ const defaultFunciton = ()=>{return true}
 class action {
   constructor(name,callback){
     !!name?this.name = name : console.error( '请上传职责名' );
-    !!callback?this.callback = callback : defaultFunciton;
-    this.nextAction = {handle:(ev)=>{console.log('审核通过')}}
+    !!callback?this.callback = callback : defaultFunciton;//默认职责   处理事件是 通过
+    this.nextAction = {handle:(ev)=>{console.log('审核通过')}} //默认 没有上一层级
   }
   setNextAction(action){
     this.nextAction = action
@@ -20,6 +20,7 @@ class action {
   }
 }
 
+//形成链
 let a1 = new action('组长',(ev)=>{
   return ev.time<15;
 })
@@ -29,9 +30,10 @@ let a2 = new action('经理',(ev)=>{
 let a3 = new action('总监',(ev)=>{
   return ev.time<8;
 })
-
 a1.setNextAction(a2);
 a2.setNextAction(a3);
 
-a1.handle({evName:'彭于晏请假',time:6});
+
+//调用
+a1.handle({evName:'彭于晏请假',time:8});
 
