@@ -16,6 +16,6 @@ class Acmen{
 
 const acmen = new Acmen('bigfairy-Jing',25);
 
-acmen.eat();    // bigfairy-Jing eat food
+acmen.eat();   // bigfairy-Jing eat food
 acmen.sleep();  // bigfairy-Jing go to bed
 acmen.coding(); //bigfairy-Jing is 25 years old and still happily coding
